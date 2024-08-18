@@ -1,0 +1,35 @@
+:root {
+  overflow-y: auto;
+}
+
+// 清楚所有常用元素默认样式
+div,
+p,
+span,
+a,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+}
