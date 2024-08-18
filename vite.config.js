@@ -25,11 +25,11 @@ export default defineConfig({
   },
   server: {
     open: false,
-    https: {
-      // key: cert.key,
-      // cert: cert.cert
-      key:'./src/ssl/cert.key',
-      cert:'./src/ssl/cert.crt'
-    }
+    // https: {
+    //   // key: cert.key,
+    //   // cert: cert.cert
+    //   key:'./src/ssl/cert.key',
+    //   cert:'./src/ssl/cert.crt'
+    // }
   }
 })

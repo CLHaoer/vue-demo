@@ -3,6 +3,9 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Html5Qrcode } from 'html5-qrcode';
 import { showToast } from 'vant';
 
+const emit = defineEmits(['scanSuccess', 'close'])
+
+const showPop = ref(true)
 const scanner = ref(null)
 // 获取相机
 const cameras = ref([])
@@ -38,11 +41,18 @@ const startScan = () => {
     });
 };
 // 扫描成功
-const emit = defineEmits(['scanSuccess'])
+
 const scanSuccessHandler = (decodedText: string, decodedResult: any) => {
   scanner.value.stop();
+  showPop.value = false
   emit('scanSuccess', decodedText, decodedResult);
 }
+
+const close = () => {
+  scanner.value.stop();
+  emit('colse')
+}
+
 
 onMounted(() => {
   getCameras()
@@ -55,17 +65,31 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <!-- <van-popup v-model:show="showPop" position="bottom" :duration="0.3" closeable style="height: 100%;"> -->
   <div class="scan-qr-two">
+    <van-icon name="arrow-left" class="back" @click="close" />
     <div id="reader"></div>
   </div>
+  <!-- </van-popup> -->
 </template>
 
 <style scoped lang='scss'>
 .scan-qr-two {
+  position: fixed;
+  top: 0;
   height: 100%;
   width: 100%;
   background-color: rgb(0, 0, 0, .7);
   overflow: hidden;
+  z-index: 99;
+
+  .back {
+    position: absolute;
+    padding: 10px;
+    font-size: 26px;
+    color: #fff;
+    z-index: 1;
+  }
 
   :deep(#reader) {
     width: 100%;
