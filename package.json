@@ -27,6 +27,6 @@
     "vite-plugin-mkcert": "^1.17.6"
   },
   "engines": {
-    "node": ">=20.3.0"
+    "node": ">=20.15.0"
   }
 }
