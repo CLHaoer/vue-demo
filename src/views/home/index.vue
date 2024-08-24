@@ -10,10 +10,14 @@ onMounted(() => {
 onActivated(() => {
   console.log('home-index onActivated');
 })
+const text = ref('扫一扫')
+const result = ref('')
 const onScan = () => {
-  useScan((value) => {
-    showToast(value)
-  })
+  useScan((t, res) => {
+    text.value = t
+    result.value = res
+    showToast(t)
+  }, null)
 }
 </script>
 
@@ -26,7 +30,8 @@ const onScan = () => {
       <van-tab title="标签 3">内容 3</van-tab>
       <van-tab title="标签 4">内容 4</van-tab>
     </van-tabs>
-    <van-button @click="onScan">扫一扫</van-button>
+    <van-button @click="onScan">{{ text }}</van-button>
+    <div>{{ result }}</div>
   </div>
 </template>
 

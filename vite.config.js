@@ -8,9 +8,9 @@ import { VantResolver } from '@vant/auto-import-resolver';
 export default defineConfig({
   plugins: [
     vue(),
-    AutoImport({
-      resolvers: [VantResolver()],
-    }),
+    // AutoImport({
+    //   resolvers: [VantResolver()],
+    // }),
     Components({
       resolvers: [VantResolver()],
     }),
@@ -25,11 +25,14 @@ export default defineConfig({
   },
   server: {
     open: false,
-    https: {
-      // key: cert.key,
-      // cert: cert.cert
-      key:'./src/ssl/cert.key',
-      cert:'./src/ssl/cert.crt'
-    }
+    // 热更新
+    hmr:true,
+    // https:true
+    // https: {
+    //   // key: cert.key,
+    //   // cert: cert.cert
+    //   key:'./src/ssl/cert.key',
+    //   cert:'./src/ssl/cert.crt'
+    // }
   }
 })
