@@ -1,8 +1,9 @@
 <script setup lang='ts'>
+import { getRegionInfo } from './utils/region';
 import { ref } from 'vue'
 import Layout from '@components/Layout.vue';
 
-
+getRegionInfo()
 </script>
 
 <template>

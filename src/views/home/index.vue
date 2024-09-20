@@ -19,6 +19,15 @@ const onScan = () => {
     showToast(t)
   }, null)
 }
+
+
+
+const anchors = [
+  100,
+  Math.round(0.4 * window.innerHeight),
+  Math.round(0.7 * window.innerHeight),
+];
+const height = ref(anchors[0]);
 </script>
 
 <template>
@@ -33,6 +42,15 @@ const onScan = () => {
     <van-button @click="onScan">{{ text }}</van-button>
     <div>{{ result }}</div>
   </div>
+  <van-floating-panel v-model:height="height" :anchors="anchors">
+    <van-tabs scrollspy sticky>
+      <van-tab v-for="index in 8" :title="'标签 ' + index">
+        <div class="content" :style="{ height: `${index * 100}px` }">
+          {{ index }} aaaa
+        </div>
+      </van-tab>
+    </van-tabs>
+  </van-floating-panel>
 </template>
 
 <style scoped lang='scss'>
@@ -50,5 +68,9 @@ const onScan = () => {
     position: sticky;
     top: calc(var(--van-nav-bar-height) + 54px);
   }
+}
+
+.content {
+  background-color: gainsboro;
 }
 </style>
